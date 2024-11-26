@@ -1,10 +1,15 @@
 import { gql } from '@apollo/client'
 
-export const generateUserQuery = (data: string) => {
+export interface IRequest {
+  path: string;
+  payload: string;
+}
+
+export const generateQuery = (request: IRequest) => {
   return gql`query ($options: PageQueryOptions) {
-  users(options: $options) {
+    ${request.path}(options: $options) {
     data {
-    ${data}
+    ${request.payload}
     }
     meta {
       totalCount
