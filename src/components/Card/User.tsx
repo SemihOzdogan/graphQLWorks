@@ -26,7 +26,7 @@ const User: FC<IUser> = ({ user }) => {
 const UserList = () => {
     const requestPayload: IRequest = {
         path: "users",
-        payload: "id name email phone"
+        payload: ["id", "name", "email", "phone"]
     }
     const { error, loading, data } = useQuery(generateQuery(requestPayload));
     if (error) {
